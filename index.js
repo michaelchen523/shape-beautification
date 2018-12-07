@@ -22,18 +22,6 @@ var svg = d3.select("svg")
         .on("start", dragstarted) // is there a better way to call the drag functions here?
         .on('end', classifyCircle));
 
-var form_val;
-changeIt(); //instantiate it as draw
-function changeIt() {
-    var form = document.getElementById("dimensions")
-    for(var i=0; i<form.length; i++){
-      if(form[i].checked){
-        form_val = form[i].id;}}
-}
-
-var dataDim = d3.select("#dimensions")
-  .on("change", changeIt)
-
 function dragstarted() {
   var d = d3.event.subject,
       active = svg.append("path").datum(d),
@@ -53,16 +41,6 @@ function dragstarted() {
   });
 
 }
-
-// function rotateShape(d) {
-//     var shape = d3.select(this);
-//     var theta = Math.atan2(d3.event.y - height/2, d3.event.x - width/2) * 180 / Math.PI
-
-//     shape
-//       .attr("x", d3.event.x)
-//       .attr("y", d3.event.y)
-//       .attr('transform', `rotate(${theta + 90}, ${d3.event.x}, ${d3.event.y})`)
-// })
 
 //TODO: There's a big where you separate and sometimes the index doesn't exist idk
 function moveLine(d) {
